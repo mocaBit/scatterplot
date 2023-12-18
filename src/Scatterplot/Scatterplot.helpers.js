@@ -1,26 +1,32 @@
-export function generateFakeWebMetrics(startDate, endDate, dataCount) {
+export function generateFakeWebMetrics(startDate, endDate) {
     const start = new Date(startDate).getTime();
     const end = new Date(endDate).getTime();
     const oneDay = 24 * 60 * 60 * 1000; // milliseconds in a day
 
-    // Ensure the range is large enough to accommodate the dataCount
-    if ((end - start) / oneDay < dataCount) {
-        throw new Error('Date range is not large enough for the specified data count');
-    }
+    const dataCount = Math.floor((end - start) / oneDay); // Number of days between start and end dates
 
     const data = [];
+    let lcpValue = 0; // Initial LCP value
+    let clsValue = 0; // Initial CLS value
+    let fidValue = 0; // Initial FID value
     for (let i = 0; i < dataCount; i++) {
         const date = new Date(start + i * oneDay);
         const rowCount = Math.floor(Math.random() * 10) + 1; // Generate a random number of rows per day (1 to 10)
         for (let j = 0; j < rowCount; j++) {
             const time = Math.floor(Math.random() * 24 * 60 * 60 * 1000); // Generate a random time within a day
             const dateTime = new Date(date.getTime() + time);
+            const lcpDeviation = (Math.random() - 0.2) * 50;
+            const clsDeviation = (Math.random() - 0.7) * 150;// Generate a random deviation for CLS value (0 to 0.1)
+            const fidDeviation = (Math.random() - 0.9) * 100;
             data.push({
                 datetime: dateTime.toISOString().split('.')[0], // format datetime as YYYY-MM-DDTHH:MM:SS
-                LCP: Math.random() * 2.5, // LCP: 0 to 2.5 seconds
-                CLS: Math.random(), // CLS: 0 to 1
-                FID: Math.random() * 100 // FID: 0 to 100 milliseconds
+                LCP: Math.abs(lcpValue + lcpDeviation), // Use the current LCP value
+                CLS: Math.abs(clsValue + clsDeviation), // Use the current CLS value with deviation
+                FID: Math.abs(fidValue + fidDeviation), // Use the current FID value
             });
+            lcpValue++; // Increment the LCP value
+            clsValue++; // Increment the CLS value
+            fidValue++; // Increment the FID value
         }
     }
 
