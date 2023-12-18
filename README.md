@@ -2,6 +2,8 @@
 
 This application is a simple React application that uses a `Scatterplot` component to display web metrics data.
 
+![](https://github.com/moisescorrea3/scatterplot/blob/main/scatterplot1.gif)
+
 ## Scatterplot Component
 
 The `Scatterplot` component is a custom component that takes in a `data` prop. This `data` prop is expected to be an array of objects, where each object represents a data point in the scatterplot.
