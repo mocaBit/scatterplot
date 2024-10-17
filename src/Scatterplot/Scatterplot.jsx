@@ -1,4 +1,3 @@
-'use client';
 import React, { useRef, useEffect, useMemo, useState } from 'react';
 import { scaleLinear, scaleTime, select, axisBottom, axisLeft, pointer } from 'd3';
 

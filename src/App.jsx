@@ -1,5 +1,5 @@
 import './App.css';
-import { Scatterplot, generateFakeWebMetrics } from './Scatterplot';
+import { Scatterplot, generateFakeWebMetrics } from './scatterplot';
 const data = generateFakeWebMetrics('2023-01-01', '2023-03-15');
 
 function App() {

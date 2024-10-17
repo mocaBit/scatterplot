@@ -1,2 +1,2 @@
 export * from './Scatterplot';
-export * from './Scatterplot.helpers';
+export * from './helpers';

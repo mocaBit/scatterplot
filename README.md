@@ -25,3 +25,8 @@ Here are the main npm scripts you can use:
 ## License
 
 This project is licensed under the MIT License.
+
+
+1 render axis and dots
+2 add hover toltips and zoom and key navigation behavior
+3 migrate to canvas
